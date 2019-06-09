@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
 def DEFAULT_COMPILE_SDK_VERSION             = 27
 def DEFAULT_BUILD_TOOLS_VERSION             = "27.0.3"
 def DEFAULT_MIN_SDK_VERSION                 = 16
@@ -29,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
+    implementation "com.facebook.react:react-native:${safeExtGet('reactNative', '+')}"
     implementation "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
     implementation "com.android.support:design:${SUPPORT_LIB_VERSION}"
     implementation ("com.facebook.android:account-kit-sdk:${ACCOUNT_KIT_VERSION}"){
