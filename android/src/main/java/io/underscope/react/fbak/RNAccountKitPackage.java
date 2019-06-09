@@ -24,4 +24,9 @@ public class RNAccountKitPackage implements ReactPackage {
         modules.add(new RNAccountKitModule(reactContext));
         return modules;
     }
+
+    // Deprecated RN 0.47
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
 }
